@@ -1,11 +1,16 @@
-load("@rules_rust//crate_universe:defs.bzl", "crate", "crates_vendor")
+load("@rules_rust//crate_universe:defs.bzl", "crates_vendor")
+load("@rules_rust//rust:defs.bzl", "rust_binary")
 
 crates_vendor(
     name = "crate_vendor",
+    manifests = ["Cargo.toml"],
     mode = "remote",
-    packages = {
-        "libffi": crate.spec(version = "3.2.0"),
-    },
     tags = ["manual"],
     vendor_path = "crates",
+)
+
+rust_binary(
+    name = "main",
+    srcs = ["src/main.rs"],
+    deps = ["//crates:libffi"],
 )
