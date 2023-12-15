@@ -11,6 +11,18 @@ services:
     volumes:
       - ".:/root/code"
     working_dir: "/root/code"
+  ubuntu-22:
+    build:
+      dockerfile_inline: |
+        FROM ubuntu:22.04
+        RUN apt-get update
+        RUN apt install -y build-essential wget
+        RUN wget -O /usr/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64
+        RUN chmod +x /usr/bin/bazel
+        RUN echo "common --experimental_convenience_symlinks=ignore" >/root/.bazelrc
+    volumes:
+      - ".:/root/code"
+    working_dir: "/root/code"
   rhel8:
     build:
       dockerfile_inline: |
