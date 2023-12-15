@@ -1,10 +1,28 @@
 services:
-  code:
+  ubuntu-24:
     build:
       dockerfile_inline: |
         FROM ubuntu:24.04
         RUN apt-get update
         RUN apt install -y build-essential wget
+        RUN wget -O /usr/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64
+        RUN chmod +x /usr/bin/bazel
+    volumes:
+      - ".:/root/code"
+  rhel8:
+    build:
+      dockerfile_inline: |
+        FROM redhat/ubi8:latest
+        RUN dnf install -y gcc wget
+        RUN wget -O /usr/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64
+        RUN chmod +x /usr/bin/bazel
+    volumes:
+      - ".:/root/code"
+  rhel9:
+    build:
+      dockerfile_inline: |
+        FROM redhat/ubi9:latest
+        RUN dnf install -y gcc wget
         RUN wget -O /usr/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64
         RUN chmod +x /usr/bin/bazel
     volumes:
