@@ -1,0 +1,9 @@
+services:
+  code:
+    build:
+      dockerfile_inline: |
+        FROM ubuntu:24.04
+        RUN apt-get update
+        RUN apt install -y build-essential wget
+        RUN wget -O /usr/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64
+        RUN chmod +x /usr/bin/bazel
