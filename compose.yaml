@@ -7,7 +7,7 @@ services:
         RUN apt install -y build-essential wget
         RUN wget -O /usr/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64
         RUN chmod +x /usr/bin/bazel
-        RUN echo "common --experimental_convenient_symlinks=ignore" >/root/.bazelrc
+        RUN echo "common --experimental_convenience_symlinks=ignore" >/root/.bazelrc
     volumes:
       - ".:/root/code"
     working_dir: "/root/code"
@@ -18,7 +18,7 @@ services:
         RUN dnf install -y gcc wget
         RUN wget -O /usr/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64
         RUN chmod +x /usr/bin/bazel
-        RUN echo "common --experimental_convenient_symlinks=ignore" >/root/.bazelrc
+        RUN echo "common --experimental_convenience_symlinks=ignore" >/root/.bazelrc
     volumes:
       - ".:/root/code"
     working_dir: "/root/code"
@@ -29,7 +29,7 @@ services:
         RUN dnf install -y gcc wget
         RUN wget -O /usr/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64
         RUN chmod +x /usr/bin/bazel
-        RUN echo "common --experimental_convenient_symlinks=ignore" >/root/.bazelrc
+        RUN echo "common --experimental_convenience_symlinks=ignore" >/root/.bazelrc
     volumes:
       - ".:/root/code"
     working_dir: "/root/code"
