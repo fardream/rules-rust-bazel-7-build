@@ -15,7 +15,7 @@ services:
     build:
       dockerfile_inline: |
         FROM redhat/ubi8:latest
-        RUN dnf install -y gcc wget
+        RUN dnf install -y gcc gcc-c++ libtool diffutils make wget
         RUN wget -O /usr/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64
         RUN chmod +x /usr/bin/bazel
         RUN echo "common --experimental_convenience_symlinks=ignore" >/root/.bazelrc
@@ -26,7 +26,7 @@ services:
     build:
       dockerfile_inline: |
         FROM redhat/ubi9:latest
-        RUN dnf install -y gcc wget
+        RUN dnf install -y gcc gcc-c++ libtool diffutils make wget        
         RUN wget -O /usr/bin/bazel https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64
         RUN chmod +x /usr/bin/bazel
         RUN echo "common --experimental_convenience_symlinks=ignore" >/root/.bazelrc
